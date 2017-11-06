@@ -1,0 +1,19 @@
+{
+  "name": "daytripper",
+  "version": "1.0.0",
+  "description": "RESTful API to serve info on user activities",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pagresham/DayTripper.git"
+  },
+  "author": "Pierce Gresham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pagresham/DayTripper/issues"
+  },
+  "homepage": "https://github.com/pagresham/DayTripper#readme"
+}
