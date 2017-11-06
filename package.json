@@ -4,7 +4,8 @@
   "description": "RESTful API to serve info on user activities",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/pagresham/DayTripper/issues"
   },
-  "homepage": "https://github.com/pagresham/DayTripper#readme"
+  "homepage": "https://github.com/pagresham/DayTripper#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "body-parser": "*",
+    "mongoose": "*",
+    "express-validator": "*"
+  }
 }
