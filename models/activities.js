@@ -11,6 +11,7 @@ var activitySchema = mongoose.Schema({
 	}
 });
 
+// Makes the model available outside of this file
 var Activity = module.exports = mongoose.model('Activity', activitySchema);
 
 // Get Activities 
@@ -34,7 +35,7 @@ module.exports.updateActivity = function(_id, activity, options, callback) {
 		name: activity.name
 	}
 
-	Activity.findOneAndUpdate(query, updateActivity, options, callback)
+	Activity.findOneAndUpdate(query, updatedActivity, options, callback)
 }
 
 
