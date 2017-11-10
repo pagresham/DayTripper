@@ -3,7 +3,9 @@ var mongoose = require('mongoose');
 var activitySchema = mongoose.Schema({
 	name: {
 		type: String,
-		required: true
+		required: [true, "Name is a required field for an Activity!"],
+		maxlength: [50, "Activity name is too long"],
+		minlength: [1, "Activity name is too short"]	
 	},
 	create_date: {
 		type: Date,
@@ -11,6 +13,10 @@ var activitySchema = mongoose.Schema({
 	}
 });
 
+
+
+
+// Makes the model available outside of this file
 var Activity = module.exports = mongoose.model('Activity', activitySchema);
 
 // Get Activities 
@@ -34,7 +40,12 @@ module.exports.updateActivity = function(_id, activity, options, callback) {
 		name: activity.name
 	}
 
-	Activity.findOneAndUpdate(query, updateActivity, options, callback)
+	Activity.findOneAndUpdate(query, updatedActivity, options, callback)
+}
+
+module.exports.deleteActivity = function(_id, callback) {
+	var query = {_id: _id};
+	Activity.remove(query, callback);
 }
 
 

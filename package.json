@@ -18,9 +18,10 @@
   },
   "homepage": "https://github.com/pagresham/DayTripper#readme",
   "dependencies": {
-    "express": "^4.16.2",
     "body-parser": "*",
+    "express": "^4.16.2",
     "mongoose": "*",
-    "express-validator": "*"
+    "slashes": "^1.0.5",
+    "validator": "^9.1.1"
   }
 }
