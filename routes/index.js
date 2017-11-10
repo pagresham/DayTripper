@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var validator = require('validator');
+// var validator = require('validator');
 var limit = 100;
 
 // Import Models
@@ -9,13 +9,13 @@ var Activity = require('../models/activities');
 var Entry = require('../models/entries');
 
 var slash = require('slashes');
+var urlencode = require("urlencode");
 
 
+// work on a validation route, the either returns a token, or just validates infront
+// of any other route. 
 
-
-
-
-
+const helpers = require("../utils/helpers");
 
 
 router.get('/', function(req, res) {
@@ -25,6 +25,9 @@ router.get('/', function(req, res) {
 
 
 // -- Start Routes -- //
+
+
+
 
 
 
@@ -47,6 +50,18 @@ router.get('/slashtest', (req, res) => {
 
 });
 
+router.get('/encodetest', (req, res) => {
+	
+	var str = helpers.encode_and_slash("<h1>it's</h1>");
+	console.log(str);
+	var str2 = helpers.decode_and_unslash(str);
+	console.log(str2)
+
+	console.log(helpers.strip("<h2>here it is</h2>"));
+
+	res.send('check the logs');
+
+})
 
 
 // =====  activities  ===== // 
@@ -57,21 +72,28 @@ router.get('/api/activity', function(req, res) {
 	Activity.getActivities(function(err, result) {
 		if(err)
 			console.log(err.message) 
-		// result.forEach((it)=> {
-		// 	console.log(it)
-		// })
+		
+
+		// Remove Slashes //
+		// for(let entry of result) {
+		// 	entry.name = slash.strip(entry.name);
+		// }
 		res.json(result)
 	}, limit)
 })
 
 
-// get all by ID
+// get all ID
 router.get('/api/activity/:_id', (req, res) => {
 	var _id = req.params._id
 	Activity.getActivitiesById(_id, function(err, result) {
 		if(err)
 			throw err
 		console.log(result)
+		// Remove Slashes //
+		// for(let entry of result) {
+		// 	entry.name = slash.strip(entry.name);
+		// }
 		res.json(result)
 	})
 })
@@ -79,10 +101,9 @@ router.get('/api/activity/:_id', (req, res) => {
 
 // post new activity
 router.post('/api/activity', (req, res) => {
-	var activity = req.body;
+	
 	console.log("Posting to /api/activity")
-
-
+	var activity = req.body;
 	Activity.addActivity(activity, (err, activity) => {
 		if(err) {
 			console.log("DB Error posting to /api/activity")
@@ -137,9 +158,11 @@ router.get('/api/entry', function(req, res) {
 	Entry.getEntries(function(err, result) {
 		if(err)
 			console.log(err) 
-		// result.forEach((it)=> {
-		// 	console.log(it)
-		// })
+	
+		// for(var entry of result) {
+		// 	entry.name = slash.strip(entry.name);
+		// }
+		// console.log("Result  " + result)
 		res.json(result)
 	}, limit)
 })
@@ -150,17 +173,18 @@ router.get('/api/entry/:_id', (req, res) => {
 	Entry.getEntryById(_id, function(err, result) {
 		if(err)
 			throw err
-		console.log(result)
+
+		
 		res.json(result)
 	})
 })
 
 // post new entry
 router.post('/api/entry', (req, res) => {
-	var entry = req.body;
+	
 	console.log("Posting to /api/entry")
-
-
+	
+	var entry = req.body;
 	Entry.addEntry(entry, (err, entry) => {
 		if(err) {
 			console.log("DB Error posting to /api/entry")
@@ -190,7 +214,20 @@ router.put('/api/entry/:_id', (req, res) => {
 	})
 })
 
+
 // Need Delete Entry
+
+// Delete an existing Book
+router.delete('/api/entry/:_id', function(req, res) {
+	var entryid = req.params._id;
+	Entry.deleteEntry(entryid, function(err, doc) {
+		if(err){
+			console.log("app.put/api/entry/:id DB error")
+			throw err;
+		}
+		res.json(doc);
+	});
+});
 
 
 
