@@ -13,9 +13,12 @@ var activitySchema = mongoose.Schema({
 	}
 });
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 6d12386fe808b091a2134554f44b2d82e77d13c3
 // Makes the model available outside of this file
 var Activity = module.exports = mongoose.model('Activity', activitySchema);
 
@@ -41,11 +44,14 @@ module.exports.updateActivity = function(_id, activity, options, callback) {
 	}
 
 	Activity.findOneAndUpdate(query, updatedActivity, options, callback)
+<<<<<<< HEAD
 }
 
 module.exports.deleteActivity = function(_id, callback) {
 	var query = {_id: _id};
 	Activity.remove(query, callback);
+=======
+>>>>>>> 6d12386fe808b091a2134554f44b2d82e77d13c3
 }
 
 

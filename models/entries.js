@@ -3,9 +3,13 @@ const validator = require('validator');
 // Can I do sterilization here as well, Add slashes, or password hashing
 
 
+// Can I do sterilization here as well, Add slashes, or password hashing
+
+
 var entrySchema = mongoose.Schema({
 	// entry props go here
 
+<<<<<<< HEAD
 	name: {
 		type: String,
 		required: [true, "Name is a required field for a n Entry!"],
@@ -41,29 +45,115 @@ var entrySchema = mongoose.Schema({
 	// 	min: 0,
 	// 	max:10
 	// },
+=======
+	// name: {
+	// 	type: String,
+	// 	required: true,
+	// 	size: {
+	// 		min:1,
+	// 		max:50
+	// 	},
+	// 	match: /[regex]/
+	// },
+	// description: {
+	// 	type: String,
+	// 	required: true,
+	// 	size: {
+	// 		min:1,
+	// 		max:255
+	// 	}
+	// 	match: /[regex]/
+	// }
+	// rating: {
+	// 	type: Number:
+	// 	required: true,
+	// 	min: 0,
+	// 	max:10
+	// }
+>>>>>>> 6d12386fe808b091a2134554f44b2d82e77d13c3
 	// difficulty: {
 	// 	type: Number,
 	// 	required: false,
 	// 	min:1,
 	// 	max:10
+<<<<<<< HEAD
 	// },
 	// city: {
 	// 	type: String,
 	// 	required: false,
 	// 	maxlength: 1,
 	// 	maxlength: 100
+=======
+	// }
+	// city: {
+	// 	type: String,
+	// 	required: false,
+	// 	size: {
+	// 		min:1,
+	// 		max:100
+	// 	}
+	// 	match: /[regex]/
+>>>>>>> 6d12386fe808b091a2134554f44b2d82e77d13c3
 	// },
 	// state: {
 	// 	type: String,
 	// 	required: false,
+<<<<<<< HEAD
 	// 	minlength: 1,
 	// 	maxlength: 100
 	// }
 	
+=======
+	// 	size: {
+	// 		min:1,
+	// 		max:100
+	// 	}
+	// 	match: /[regex]/
+	// }
+	// lat: {
+	// 	type: Number,
+	// 	required: false
+	// }
+	// lon: {
+	// 	type: Number,
+	// 	required: false
+	// }
+	// location: {
+	// 	lat: {
+	// 		type: Number,
+	// 		required: false
+	// 	},
+	// 	lon: {
+	// 		type: Number,
+	// 		required: false
+	// 	},
+	// 	city: {
+	// 		type: String,
+	// 		required: false,
+	// 		size: {
+	// 			min:1,
+	// 			max:100
+	// 		}
+	// 		match: /[regex]/
+	// 	},
+	// 	state: {
+	// 		type: String,
+	// 		required: false,
+	// 		size: {
+	// 			min:1,
+	// 			max:100
+	// 		}
+	// 		match: /[regex]/
+	// 	}
+	// }
+
+
+>>>>>>> 6d12386fe808b091a2134554f44b2d82e77d13c3
 });
 
 var Entry = module.exports = mongoose.model('Entry', entrySchema);
 
+<<<<<<< HEAD
 // Get Activities 
 
 module.exports.getEntries = function(callback, limit){
@@ -87,3 +177,6 @@ module.exports.updateEntry = function(_id, entry, options, callback) {
 
 	Entry.findOneAndUpdate(query, updatedEntry, options, callback)
 }
+=======
+
+>>>>>>> 6d12386fe808b091a2134554f44b2d82e77d13c3

@@ -3,6 +3,7 @@ const port = 3000;
 
 const app = express();
 
+<<<<<<< HEAD
 
 // Slashes syntax //
 var slashes = require('slashes');
@@ -20,6 +21,12 @@ const validator = require('validator');
 // https://stackoverflow.com/questions/18022365/mongoose-validate-email-syntax
 // 
 // https://www.npmjs.com/package/validator
+=======
+const validator = require('express-validator');
+// import { isEmail } from 'validator';
+// See this link
+// https://stackoverflow.com/questions/18022365/mongoose-validate-email-syntax
+>>>>>>> 6d12386fe808b091a2134554f44b2d82e77d13c3
 
 
 const mongoose = require('mongoose');
@@ -40,10 +47,19 @@ var creds = require('./creds');
 mongoose.connect(creds.connectionString)
 
 
+<<<<<<< HEAD
 
 // make other route files available
 app.use("/users", user);
 app.use("/", index);
+=======
+
+
+// make other route files available
+app.use("/users", user);
+app.use("/", entry);
+
+>>>>>>> 6d12386fe808b091a2134554f44b2d82e77d13c3
 
 
 
