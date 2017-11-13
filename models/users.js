@@ -46,13 +46,29 @@ var User = module.exports = mongoose.model('User', userSchema);
 
 // Get Users 
 
-module.exports.getUser = function(callback, limit){
+module.exports.getUsers = function(callback, limit){
 	User.find(callback).limit(limit);
 }
+
+
 
 module.exports.getUserById = function(id, callback){
 	User.findById(id, callback);
 }
+
+
+
+
+
+// Find by username //
+// Used for validation
+module.exports.getByUserName = function(username, callback) {
+	var query = {uname: username}
+	User.find(query, callback);
+}
+
+
+
 
 // Needs work
 module.exports.addUser = function(user, callback) {
