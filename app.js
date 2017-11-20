@@ -1,5 +1,7 @@
 // Starts mongod locally 
-// $ mongod --dbpath '/Users/piercegresham/Google Drive/javaScriptSandbox/node_tutorials_copy/DayTripper/data'
+// $ mongod --dbpath '/Users/piercegresham/Google Drive/javaScriptSandbox/node_tutorials_copy/DayTripper/data' - Mac
+// $ mongod --dbpath "C:\Users\ansonpierce\Google Drive\javaScriptSandbox\node_tutorials_copy\DayTripper\data" - Windows
+// > mongod --dbpath C:\Users\ansonpierce\DaytripperDB\data - NEW db location outside of GD on PC
 
 const express = require('express');
 const port = 3000;

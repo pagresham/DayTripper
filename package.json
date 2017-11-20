@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/pagresham/DayTripper#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "*",
     "express": "^4.16.2",
     "mongoose": "*",

@@ -17,18 +17,20 @@ var entrySchema = mongoose.Schema({
 		minlength: [1, "Entry name is too short"]	
 	},
 	// needs email validation only here only ?? //
-	email:{
-	type:String,
-	validate:{
-	      validator: validator.isEmail,
-	      message: '{VALUE} is not a valid email',
-	      isAsync: false
-	    }
+	dateOf:{
+		type: Date,
+		required: [true, "Date is a required field for an entry."]
 	},
 	latlon: {
 		type: String,
+		required: false,
 		validate: {
-			validator: validator.isLatLong,
+			validator: function(v) {
+				if(v != "") {
+					return validator.isLatLong;
+				}
+			},
+			//validator: validator.isLatLong,
 			message: '{VALUE} is not a valid LatLon',
 			isAsync: false
 		}
@@ -56,14 +58,11 @@ var entrySchema = mongoose.Schema({
 	city: {
 		type: String,
 		required: false,
-		maxlength: 1,
 		maxlength: 100
 	},
 	state: {
 		type: String,
 		required: false,
-
-		minlength: 1,
 		maxlength: 100
 	}
 });

@@ -3,6 +3,8 @@ var validator = require('validator');
 var userSchema = mongoose.Schema({
 	
 
+
+
 // need to write methods to crete new user, 
 // get all users
 // update a user 
@@ -80,7 +82,7 @@ module.exports.updateUser = function(_id, user, options, callback) {
 	var query = {_id: _id}
 
 	var updatedUser = {
-		uname: user.name,
+		uname: user.uname,
 		password: user.password,
 		email: user.email
 	}

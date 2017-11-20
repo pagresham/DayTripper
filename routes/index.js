@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-// var validator = require('validator');
+var validator = require('validator');
 var limit = 100;
 
 // Import Models
@@ -175,7 +175,7 @@ router.get('/api/entry/:_id', (req, res) => {
 			throw err
 
 		
-		res.json(result)
+		res.json(result);
 	})
 })
 
@@ -185,6 +185,7 @@ router.post('/api/entry', (req, res) => {
 	console.log("Posting to /api/entry")
 	
 	var entry = req.body;
+	console.log(req.body);
 	Entry.addEntry(entry, (err, entry) => {
 		if(err) {
 			console.log("DB Error posting to /api/entry")
